@@ -1,0 +1,48 @@
+{
+  "name": "bayane-qos",
+  "version": "5.0.0",
+  "private": true,
+  "dependencies": {
+    "@craco/craco": "^6.4.0",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "antd": "^4.16.13",
+    "axios": "^0.24.0",
+    "craco-less": "^1.20.0",
+    "dayjs": "^1.10.7",
+    "faker": "^5.5.3",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "latest",
+    "typescript": "latest"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/faker": "^5.5.9",
+    "@types/react-router-dom": "^5.3.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  }
+}

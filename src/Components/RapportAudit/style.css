@@ -1,0 +1,23 @@
+.list-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.action {
+  cursor: pointer;
+}
+
+.rank-minor {
+  padding: 1rem;
+  background-color: rgb(179, 174, 174);
+}
+
+.rank-major {
+  padding: 1rem;
+  background-color: rgb(127, 170, 133);
+}
+
+.rank-opportunity {
+  padding: 1rem;
+  background-color: rgb(145, 88, 66);
+}

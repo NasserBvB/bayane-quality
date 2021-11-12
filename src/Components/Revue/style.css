@@ -1,0 +1,27 @@
+.ameliorer {
+  padding: 1rem;
+  background-color: rgb(201, 196, 129) ;
+}
+
+.satisfaisant {
+  padding: 1rem;
+  background-color: green;
+}
+
+li {
+  list-style-type: none;
+}
+.type {
+  display: flex;
+  /* justify-content: space-between;  */
+}
+
+.type input {
+  margin-right: 1rem;
+  width: 20px;
+  height: 20px;
+}
+
+.content {
+  max-width: 50ch;
+}
