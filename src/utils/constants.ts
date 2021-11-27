@@ -1,6 +1,8 @@
 import faker from "faker";
 import {
   IAction,
+  IDocumentInterne,
+  IEnregistrement,
   IGlobalState,
   IIndicateur,
   IInterpretations,
@@ -75,13 +77,13 @@ export const actions = (processus: IProcessus) =>
     })}`,
     date_realisation: faker.date.recent().toISOString(),
     delai_evaluation_efficacite: "6 mois",
-    commentaires: [
-      {
+    commentaires: new Array(faker.random.number({ min: 1, max: 5 }))
+      .fill(0)
+      .map(() => ({
         author: faker.name.findName(),
         comment: faker.lorem.sentence(),
         date: faker.date.recent().toISOString(),
-      },
-    ],
+      })),
     priorite: faker.random.arrayElement(["A", "B", "C"]),
     avancement: faker.random.arrayElement([
       "En cours",
@@ -89,6 +91,7 @@ export const actions = (processus: IProcessus) =>
       "En attente",
     ]),
     efficacite: faker.random.arrayElement(["Oui", "Non"]),
+    critere_efficacite: "Opérations transferées entre filiales",
     analyse_causes: faker.lorem.sentence(),
     number_action: faker.datatype.number() + "",
     processus,
@@ -210,4 +213,59 @@ export const revue = (processus: IProcessus) =>
     decisions: new Array(faker.datatype.number({ max: 3, min: 1 }))
       .fill(0)
       .map(() => faker.lorem.sentence()),
+  }));
+
+export const enregistrements = (processus: IProcessus) =>
+  new Array(1000).fill(0).map<IEnregistrement>((_, idx) => ({
+    id: faker.datatype.uuid(),
+    processus,
+    createdAt: faker.date.recent().toISOString(),
+    updatedAt: faker.date.recent().toISOString(),
+    duree_classement: `${faker.random.arrayElement([
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+    ])} ${faker.random.arrayElement(["jours", "mois", "ans"])}`,
+    lieu_classement: faker.address.city(),
+    mode_classement: faker.random.arrayElement([
+      "Physique et Numérique",
+      "Physique",
+      "Numérique",
+    ]),
+    responsable_classement: faker.name.firstName(),
+    title: faker.lorem.sentence(),
+  }));
+
+export const documents = (processus: IProcessus) =>
+  new Array(1000).fill(0).map<IDocumentInterne>((_, idx) => ({
+    id: faker.datatype.uuid(),
+    processus,
+    approbateur: faker.name.firstName(),
+    author: faker.name.firstName(),
+    code: faker.datatype.uuid(),
+    date_creation: faker.date.recent().toISOString(),
+    diffusion: faker.random.arrayElement(["Serveur //SMQ"]),
+    title: faker.lorem.sentence(),
+    verificateur: faker.name.firstName(),
+    version: faker.random.arrayElement([
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+    ]),
+    createdAt: faker.date.recent().toISOString(),
+    updatedAt: faker.date.recent().toISOString(),
   }));

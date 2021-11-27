@@ -111,6 +111,7 @@ export interface IAction extends ICommon {
   date_realisation: string;
   delai_evaluation_efficacite: string;
   efficacite: string;
+  critere_efficacite: string;
   commentaires: IComment[];
   priorite: IPriorite;
   avancement: string;
@@ -154,4 +155,25 @@ export interface IRapportAuditData {
   processus: IProcessus;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface IDocumentInterne extends ICommon {
+  processus: IProcessus;
+  title: string;
+  code: string;
+  version: string;
+  date_creation: string;
+  author: string;
+  verificateur: string;
+  approbateur: string;
+  diffusion: string;
+}
+
+export interface IEnregistrement extends ICommon {
+  processus: IProcessus;
+  title: string;
+  responsable_classement: string;
+  lieu_classement: string;
+  mode_classement: string;
+  duree_classement: string;
 }

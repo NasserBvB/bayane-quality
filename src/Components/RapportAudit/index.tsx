@@ -10,6 +10,10 @@ import './style.css';
 
 dayjs.extend(relativeTime);
 
+const valueStyle: any = (color: string) => ({
+    color,
+    display: "flex", justifyContent: "center", alignItems: "center", fontSize: "2.5rem"
+})
 
 interface IFooterProps {
     total: number;
@@ -18,14 +22,14 @@ interface IFooterProps {
     opportunity: number;
 }
 
-const Footer = ({major,minor,opportunity,total}: IFooterProps) => (
+const Footer = ({ major, minor, opportunity, total }: IFooterProps) => (
     <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
         <Col className="gutter-row" span={6}>
             <Card>
                 <Statistic
                     title="Nc Mineure"
                     value={minor}
-                    valueStyle={{ color: 'rgb(179, 174, 174)' }}
+                    valueStyle={valueStyle('rgb(179, 174, 174)')}
                 />
             </Card>
         </Col>
@@ -34,7 +38,7 @@ const Footer = ({major,minor,opportunity,total}: IFooterProps) => (
                 <Statistic
                     title="Nc Majeure"
                     value={major}
-                    valueStyle={{ color: 'rgb(127, 170, 133)' }}
+                    valueStyle={valueStyle('rgb(127, 170, 133)')}
                 />
             </Card>
         </Col>
@@ -43,7 +47,7 @@ const Footer = ({major,minor,opportunity,total}: IFooterProps) => (
                 <Statistic
                     title="Opportunité d'Amélioration"
                     value={opportunity}
-                    valueStyle={{ color: 'rgb(145, 88, 66)' }}
+                    valueStyle={valueStyle('rgb(145, 88, 66)')}
                 />
             </Card>
         </Col>
@@ -52,7 +56,7 @@ const Footer = ({major,minor,opportunity,total}: IFooterProps) => (
                 <Statistic
                     title="Total"
                     value={total}
-                    valueStyle={{ color: 'rgb(135, 161, 138)' }}
+                    valueStyle={valueStyle('rgb(135, 161, 138)')}
                 />
             </Card>
         </Col>
@@ -133,17 +137,13 @@ export function RapportAudit() {
 
     return <>
         <DetailProcess />
-        <Footer {...stats}/>
+        <Footer {...stats} />
         <Table
             columns={columns}
             dataSource={data}
             size="large"
             tableLayout="fixed"
             scroll={{ x: 'calc(500px + 50%)', y: 1000 }}
-        // footer={() => <Footer/>}
-        // pagination={{
-        //     position: ["topRight"]
-        // }}
         />
     </>
 }

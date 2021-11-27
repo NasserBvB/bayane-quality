@@ -1,4 +1,7 @@
-import { Col, Row } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
+import { Button, Col, Popover, Row } from "antd";
+import { } from "antd/";
+import { FormsActions } from "Components/FormsActions";
 import { useGlobal } from "Components/Providers/global.provider";
 const style = { padding: '8px 0' };
 
@@ -30,6 +33,11 @@ export const DetailProcess = () => {
             <Col className="gutter-row" span={6}>
                 <div style={{ ...style, textTransform: "uppercase" }}>{currentProcessus.code}</div>
             </Col>
+        </Row>
+        <Row style={{  display: "flex", justifyContent: "flex-end", alignItems: "center" }} gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
+            <Popover  content={FormsActions} trigger="hover" placement="bottom" arrowPointAtCenter>
+                <Button type="link"   icon={<PlusOutlined />} >Créer </Button>  
+            </Popover>
         </Row>
     </>;
 }

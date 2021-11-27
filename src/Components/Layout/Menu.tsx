@@ -111,11 +111,12 @@ export const NavigationMenu = () => {
             className="logo"
         >Bayane</div>
         <Select
-            defaultValue={processuses[0].id}
+            defaultValue={currentProcessus?.id || processuses[0]?.id}
             onSelect={handleSelect}
             size="large"
             maxLength={200}
             showSearch
+            allowClear
             className="select-current-process"
         >
             {processuses.map(item => <Option value={item.id} key={item.id}>{item.title}</Option>)}
@@ -123,7 +124,7 @@ export const NavigationMenu = () => {
         <Menu
             theme="dark"
             defaultSelectedKeys={[pathname.split('/')[1]]}
-            mode="inline"
+            mode="vertical"
         >
             {
                 menu.map(item => {
