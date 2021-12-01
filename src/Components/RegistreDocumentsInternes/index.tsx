@@ -2,49 +2,65 @@ import { Table } from 'antd';
 import { DetailProcess } from 'Components/DetailProcess';
 import { useGlobal } from 'Components/Providers/global.provider';
 import React, { useEffect } from 'react';
-import { enregistrements } from 'utils/constants';
+import { documents } from 'utils/constants';
 
-export default function RegistreEnregistrements() {
+export default function RegistreDocumentsInternes() {
+
     const { currentProcessus } = useGlobal()
     const columns: any[] = [
         {
-            title: "Enregistrement à maîtriser",
+            title: "Désignation du document",
             dataIndex: 'title',
             key: 'title',
             width: 350,
         },
         {
-            title: "Resp. Classement",
-            dataIndex: 'responsable_classement',
-            key: 'responsable_classement',
+            title: "Code",
+            dataIndex: 'code',
+            key: 'code',
         },
         {
-            title: 'Lieu de Classement',
-            dataIndex: 'lieu_classement',
-            key: 'lieu_classement',
+            title: 'Version',
+            dataIndex: 'version',
+            key: 'version',
         },
         {
-            title: "Mode de Classement",
-            dataIndex: 'mode_classement',
-            key: 'mode_classement',
+            title: "Date de la mise en place",
+            dataIndex: 'date_creation',
+            key: 'date_creation',
             width: 180,
         },
         {
-            title: "Durée de Classement ",
-            dataIndex: 'duree_classement',
-            key: 'duree_classement',
+            title: "Rédacteur",
+            dataIndex: 'author',
+            key: 'author',
+        },
+        {
+            title: "Vérificateur",
+            dataIndex: 'verificateur',
+            key: 'verificateur',
+        },
+        {
+            title: "Approbateur",
+            dataIndex: 'approbateur',
+            key: 'approbateur',
+        },
+        {
+            title: "Diffusion/ Point d'utilisation",
+            dataIndex: 'diffusion',
+            key: 'diffusion',
         },
     ];
 
-    const [data, setData] = React.useState(enregistrements(currentProcessus));
+    const [data, setData] = React.useState(documents(currentProcessus));
 
     useEffect(() => {
-        setData(enregistrements(currentProcessus));
+        setData(documents(currentProcessus));
     }, [currentProcessus]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <>
-            <DetailProcess />
+            <DetailProcess page="Registre des documents internes" />
             <Table
                 columns={columns}
                 dataSource={data}

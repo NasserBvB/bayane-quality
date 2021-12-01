@@ -13,12 +13,13 @@ export const MyModal = React.forwardRef((props: Props, ref: any) => {
     const [visible, setVisible] = useState(false)
 
     const showModal = () => setVisible(true);
-    const handleCancel = () => setVisible(false);
+    const hideModal = () => setVisible(false);
 
     useImperativeHandle(
         ref,
         () => ({
-            showModal
+            showModal,
+            hideModal
         }),
     )
 
@@ -26,7 +27,7 @@ export const MyModal = React.forwardRef((props: Props, ref: any) => {
         <Modal
             visible={visible}
             title={title}
-            onCancel={handleCancel}
+            onCancel={hideModal}
             onOk={onConfirm}
             okText="Confirm"
             cancelText="Cancel"

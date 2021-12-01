@@ -2,65 +2,49 @@ import { Table } from 'antd';
 import { DetailProcess } from 'Components/DetailProcess';
 import { useGlobal } from 'Components/Providers/global.provider';
 import React, { useEffect } from 'react';
-import { documents } from 'utils/constants';
+import { enregistrements } from 'utils/constants';
 
-export default function RegistreDocumentsInternes() {
-
+export default function RegistreEnregistrements() {
     const { currentProcessus } = useGlobal()
     const columns: any[] = [
         {
-            title: "Désignation du document",
+            title: "Enregistrement à maîtriser",
             dataIndex: 'title',
             key: 'title',
             width: 350,
         },
         {
-            title: "Code",
-            dataIndex: 'code',
-            key: 'code',
+            title: "Resp. Classement",
+            dataIndex: 'responsable_classement',
+            key: 'responsable_classement',
         },
         {
-            title: 'Version',
-            dataIndex: 'version',
-            key: 'version',
+            title: 'Lieu de Classement',
+            dataIndex: 'lieu_classement',
+            key: 'lieu_classement',
         },
         {
-            title: "Date de la mise en place",
-            dataIndex: 'date_creation',
-            key: 'date_creation',
+            title: "Mode de Classement",
+            dataIndex: 'mode_classement',
+            key: 'mode_classement',
             width: 180,
         },
         {
-            title: "Rédacteur",
-            dataIndex: 'author',
-            key: 'author',
-        },
-        {
-            title: "Vérificateur",
-            dataIndex: 'verificateur',
-            key: 'verificateur',
-        },
-        {
-            title: "Approbateur",
-            dataIndex: 'approbateur',
-            key: 'approbateur',
-        },
-        {
-            title: "Diffusion/ Point d'utilisation",
-            dataIndex: 'diffusion',
-            key: 'diffusion',
+            title: "Durée de Classement ",
+            dataIndex: 'duree_classement',
+            key: 'duree_classement',
         },
     ];
 
-    const [data, setData] = React.useState(documents(currentProcessus));
+    const [data, setData] = React.useState(enregistrements(currentProcessus));
 
     useEffect(() => {
-        setData(documents(currentProcessus));
+        setData(enregistrements(currentProcessus));
     }, [currentProcessus]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <>
-            <DetailProcess />
+            <DetailProcess page="Registres des enregistrements internes" />
             <Table
                 columns={columns}
                 dataSource={data}

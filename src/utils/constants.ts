@@ -36,30 +36,8 @@ export const users = new Array(10).fill(0).map<IUser>((_, i) => ({
   updatedAt: faker.date.recent().toISOString(),
 }));
 
-export const initialState: IGlobalState = {
-  processuses,
-  annee: new Date().getFullYear(),
-  users,
-  currentProcessus: processuses[0],
-  periode: {
-    start: 1,
-    end: 12,
-  },
-  state: "signin",
-  user: users[0],
-  changeAnnee: () => {},
-  changePeriode: () => {},
-  changeProcessus: () => {},
-  changeUser: () => {},
-  error: null,
-  setError: () => {},
-  signin: () => {},
-  signout: () => {},
-  token: null,
-};
-
 export const actions = (processus: IProcessus) =>
-  new Array(100).fill(0).map<IAction>(() => ({
+  new Array(50).fill(0).map<IAction>(() => ({
     date_action: faker.date.recent().toISOString(),
     description: faker.lorem.sentence(),
     nature_action: faker.random.arrayElement([
@@ -269,3 +247,27 @@ export const documents = (processus: IProcessus) =>
     createdAt: faker.date.recent().toISOString(),
     updatedAt: faker.date.recent().toISOString(),
   }));
+
+export const initialState: IGlobalState = {
+  processuses,
+  annee: new Date().getFullYear(),
+  users,
+  currentProcessus: processuses[0],
+  actions: actions(processuses[0]),
+  periode: {
+    start: 1,
+    end: 12,
+  },
+  state: "signin",
+  user: users[0],
+  changeAnnee: () => {},
+  changePeriode: () => {},
+  changeProcessus: () => {},
+  changeUser: () => {},
+  error: null,
+  setError: () => {},
+  signin: () => {},
+  signout: () => {},
+  addAction: () => {},
+  token: null,
+};

@@ -25,7 +25,10 @@ interface IFooterProps {
 const Footer = ({ major, minor, opportunity, total }: IFooterProps) => (
     <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
         <Col className="gutter-row" span={6}>
-            <Card>
+            <Card hoverable style={{
+                margin: "10px",
+                minHeight: "160px"
+            }}>
                 <Statistic
                     title="Nc Mineure"
                     value={minor}
@@ -34,7 +37,10 @@ const Footer = ({ major, minor, opportunity, total }: IFooterProps) => (
             </Card>
         </Col>
         <Col className="gutter-row" span={6}>
-            <Card>
+            <Card hoverable style={{
+                margin: "10px",
+                minHeight: "160px"
+            }}>
                 <Statistic
                     title="Nc Majeure"
                     value={major}
@@ -43,7 +49,10 @@ const Footer = ({ major, minor, opportunity, total }: IFooterProps) => (
             </Card>
         </Col>
         <Col className="gutter-row" span={6}>
-            <Card>
+            <Card hoverable style={{
+                margin: "10px",
+                minHeight: "160px"
+            }}>
                 <Statistic
                     title="Opportunité d'Amélioration"
                     value={opportunity}
@@ -52,7 +61,10 @@ const Footer = ({ major, minor, opportunity, total }: IFooterProps) => (
             </Card>
         </Col>
         <Col className="gutter-row" span={6}>
-            <Card>
+            <Card hoverable style={{
+                margin: "10px",
+                minHeight: "160px"
+            }}>
                 <Statistic
                     title="Total"
                     value={total}
@@ -136,7 +148,7 @@ export function RapportAudit() {
     const stats = getStatistiques(data);
 
     return <>
-        <DetailProcess />
+        <DetailProcess page="Rapport d'audit" />
         <Footer {...stats} />
         <Table
             columns={columns}

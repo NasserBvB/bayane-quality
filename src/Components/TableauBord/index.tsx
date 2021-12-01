@@ -5,16 +5,15 @@ import { useGlobal } from "Components/Providers/global.provider";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import faker from 'faker';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IAction, IIndicateur, IInterpretations } from 'types';
-import { actions, tableauBord } from 'utils/constants';
+import { tableauBord } from 'utils/constants';
 import './style.css';
 const { Option } = Select;
 dayjs.extend(relativeTime);
 
 export function TableauBord() {
-    const { currentProcessus } = useGlobal();
-    const actionsList = useMemo(() => actions(currentProcessus), [currentProcessus])
+    const { currentProcessus, actions: actionsList } = useGlobal();
     const [data, setData] = React.useState(tableauBord(currentProcessus, actionsList));
 
     const ListInterpretations = (text: string, record: IIndicateur, index: number) => {
@@ -162,7 +161,7 @@ export function TableauBord() {
 
 
     return <>
-        <DetailProcess />
+        <DetailProcess page="Tableau de bord" />
         <Table
             columns={columns}
             dataSource={data}

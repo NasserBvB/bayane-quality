@@ -1,7 +1,7 @@
-import { Form, Input, Radio } from 'antd';
+import { Form, Input } from 'antd';
 import React from 'react';
 
-export default function EnregistrementForm() {
+export const EnregistrementForm = () => {
     const [form] = Form.useForm();
     return (
         <Form
@@ -10,21 +10,24 @@ export default function EnregistrementForm() {
             name="form_in_modal"
             initialValues={{ modifier: 'public' }}
         >
-            <Form.Item
-                name="title"
-                label="Title"
-                rules={[{ required: true, message: 'Please input the title of collection!' }]}
-            >
-                <Input />
+            <Form.Item name="title" label="Enregistrement à maîtriser">
+                <Input type="textarea" placeholder="Enregistrement à maîtriser" />
             </Form.Item>
-            <Form.Item name="description" label="Description">
-                <Input type="textarea" />
+
+            <Form.Item name="responsable_classement" label="Resp. Classement">
+                <Input type="textarea" placeholder="Resp. Classement" />
             </Form.Item>
-            <Form.Item name="modifier" className="collection-create-form_last-form-item">
-                <Radio.Group>
-                    <Radio value="public">Public</Radio>
-                    <Radio value="private">Private</Radio>
-                </Radio.Group>
+
+            <Form.Item name="lieu_classement" label="Lieu de Classement">
+                <Input type="textarea" placeholder="Lieu de Classement" />
+            </Form.Item>
+
+            <Form.Item name="mode_classement" label="Mode de Classement">
+                <Input type="textarea" placeholder="Mode de Classement" />
+            </Form.Item>
+
+            <Form.Item name="duree_classement" label="Durée de Classement">
+                <Input type="textarea" placeholder="Durée de Classement" />
             </Form.Item>
         </Form>
     )

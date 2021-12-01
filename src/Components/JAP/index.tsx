@@ -2,17 +2,11 @@ import { List, Table, Tag, Typography } from 'antd';
 import { DetailProcess } from 'Components/DetailProcess';
 import { useGlobal } from 'Components/Providers/global.provider';
 import dayjs from 'dayjs';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { IAction, IComment } from 'types';
-import { actions } from 'utils/constants';
 
 export default function JAP() {
-    const { currentProcessus } = useGlobal()
-    const [data, setData] = React.useState(actions(currentProcessus));
-
-    useEffect(() => {
-        setData(actions(currentProcessus));
-    }, [currentProcessus]) // eslint-disable-line react-hooks/exhaustive-deps
+    const { actions } = useGlobal()
 
     const columns: any[] = [
 
@@ -26,7 +20,7 @@ export default function JAP() {
             title: "Date",
             dataIndex: 'date_action',
             key: 'date_action',
-            minWidth: 80,
+            width: 80,
             render: (text: string, record: IAction) => dayjs(record.date_action).format('DD/MM/YYYY')
         },
         {
@@ -51,7 +45,7 @@ export default function JAP() {
             title: "Analyse des causes",
             dataIndex: 'analyse_causes',
             key: 'analyse_causes',
-            minWidth: 180,
+            width: 180,
         },
         {
             title: "Action",
@@ -63,43 +57,44 @@ export default function JAP() {
             title: "Responsable de l'action",
             dataIndex: 'responsable',
             key: 'responsable',
-            minWidth: 80,
+            width: 80,
         },
         {
             title: "Autres entités concernées (si besoin)",
             dataIndex: 'autres_entities',
             key: 'autres_entities',
-            minWidth: 80,
+            width: 180,
         },
         {
             title: "Delai",
             dataIndex: 'delai',
             key: 'delai',
-            minWidth: 80,
+            width: 80,
         },
         {
             title: "Date de réalisation",
             dataIndex: 'date_realisation',
             key: 'date_realisation',
-            minWidth: 80,
+            width: 80,
+            render: (text: string, record: IAction) => dayjs(record.date_realisation).format('DD/MM/YYYY')
         },
         {
             title: "Délai d'évaluation de l'efficacité",
             dataIndex: 'delai_evaluation_efficacite',
             key: 'delai_evaluation_efficacite',
-            minWidth: 80,
+            width: 80,
         },
         {
             title: "Critères d'évaluation de l'efficacité",
             dataIndex: 'critere_efficacite',
             key: 'critere_efficacite',
-            minWidth: 80,
+            width: 80,
         },
         {
             title: "Efficacité ",
             dataIndex: 'efficacite',
             key: 'efficacite',
-            minWidth: 80,
+            width: 80,
         },
         {
             title: "Commentaire et suivi ",
@@ -127,24 +122,25 @@ export default function JAP() {
             title: "Priorité",
             dataIndex: 'priorite',
             key: 'priorite',
-            minWidth: 80,
+            width: 80,
         },
         {
             title: "Avancement",
             dataIndex: 'avancement',
             key: 'avancement',
-            minWidth: 80,
+            width: 80,
         },
     ];
+    
     return (
         <>
-            <DetailProcess />
+            <DetailProcess page="Actions"/>
             <Table
                 columns={columns}
-                dataSource={data}
-                size="large"
+                dataSource={actions}
+                size="small"
                 tableLayout="fixed"
-                scroll={{ x: 'calc(500px + 50%)', y: 1000 }}
+                scroll={{ x: 'calc(1000px + 50%)', y: 1000 }}
                 showHeader
             />
         </>

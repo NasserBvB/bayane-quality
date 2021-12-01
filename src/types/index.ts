@@ -42,6 +42,8 @@ export type IGlobalState = {
   changePeriode: (periode: { start: number; end: number }) => void;
   changeProcessus: (processus: IProcessus) => void;
   changeUser: (user: IUser) => void;
+  addAction: (user: IAction) => void;
+  actions: IAction[];
 };
 
 export type ILoginForm = {

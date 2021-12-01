@@ -1,4 +1,5 @@
 import { Row } from 'antd';
+import { DetailProcess } from 'Components/DetailProcess';
 import { useGlobal } from 'Components/Providers/global.provider';
 import React from 'react';
 const style = { padding: '8px 0' };
@@ -21,6 +22,8 @@ export default function CIP() {
     const { currentProcessus } = useGlobal()
     return (
         <>
+            <DetailProcess page="Carte d'identité du process" />
+
             <Row style={{ border: "1px solid #6666" }} gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                 <div style={{
                     ...style, ...titleStyle

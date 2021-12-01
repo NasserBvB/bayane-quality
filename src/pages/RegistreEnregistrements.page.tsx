@@ -1,4 +1,4 @@
-import RegistreEnregistrements from 'Components/RegistreDocumentsInternes'
+import RegistreEnregistrements from 'Components/RegistreEnregistrements'
 import React from 'react'
 import { Layout } from '../Components/Layout'
 
