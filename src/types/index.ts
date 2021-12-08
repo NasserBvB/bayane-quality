@@ -29,6 +29,8 @@ export type IGlobalState = {
   signin: ({ token, user }: ISignIn) => void;
   signout: () => void;
   error: unknown | null;
+  searching: boolean;
+  toggleSearching: () => void;
   setError: (erro: unknown) => void;
   currentProcessus: IProcessus;
   processuses: IProcessus[];
@@ -89,11 +91,42 @@ export interface IComment {
   date: string;
 }
 
+export interface IHistorique_version {
+  version: string;
+  date: string;
+  descriptifs: string;
+}
+
+export interface IElements_entree {
+  title: string;
+  fournisseur: string;
+} 
+
+export interface IActivite {
+  activity: string;
+  responsabilite: string[];
+  description: string[];
+  reference: string[];
+} 
+
 export interface IProcessus extends ICommon {
   title: string;
   description: string;
   code: string;
   pilote: string[];
+  historiques_versions: IHistorique_version[];
+  finalités: string[];
+  animateurs: string[];
+  sponsor: string[];
+  elements_entrees: IElements_entree[];
+  elements_sorties: IElements_entree[];
+  besoin_communication: IElements_entree[];
+  besoin_formation: IElements_entree[];
+  besoin_recrutement: IElements_entree[];
+  besoin_demande_administrative: IElements_entree[];
+  besoin_evaluation: IElements_entree[];
+  besoin_achat: IElements_entree[];
+  activites: IActivite[];
 }
 
 export type IPriorite = "A" | "B" | "C" | "D";
@@ -178,4 +211,12 @@ export interface IEnregistrement extends ICommon {
   lieu_classement: string;
   mode_classement: string;
   duree_classement: string;
+}
+
+export interface IFilterResult {
+  actionsDataResult: IAction[];
+  usersResult: IUser[];
+  rapportAuditResult: IRapportAuditData[];
+  documentsResult: IDocumentInterne[];
+  enregistrementsResult: IEnregistrement[];
 }

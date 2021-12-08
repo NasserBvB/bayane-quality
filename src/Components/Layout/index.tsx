@@ -1,4 +1,6 @@
 import { Layout as LayoutWrapper } from 'antd';
+import GlobalFilter from 'Components/GlobalFilter';
+import { useGlobal } from 'Components/Providers/global.provider';
 import React from 'react';
 import { NavigationMenu } from './Menu';
 import './style.css';
@@ -12,6 +14,7 @@ interface IProps {
 
 
 export const Layout = ({ children }: IProps) => {
+    const {searching} = useGlobal()
     return (
         <LayoutWrapper
             style={{ minHeight: '100vh' }}
@@ -31,7 +34,8 @@ export const Layout = ({ children }: IProps) => {
                         className="site-layout-background"
                         style={{ padding: 24, minHeight: 360 }}
                     >
-                        {children}
+                        {!searching && children}
+                        {searching && <GlobalFilter/>}
                     </div>
                 </Content>
                 <Footer

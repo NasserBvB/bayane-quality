@@ -1,14 +1,17 @@
 import faker from "faker";
 import {
   IAction,
+  IActivite,
   IDocumentInterne,
+  IElements_entree,
   IEnregistrement,
   IGlobalState,
+  IHistorique_version,
   IIndicateur,
   IInterpretations,
   IProcessus,
   IRapportAuditData,
-  IUser
+  IUser,
 } from "types";
 
 export const processuses = new Array(10).fill(0).map<IProcessus>((_, i) => ({
@@ -23,6 +26,68 @@ export const processuses = new Array(10).fill(0).map<IProcessus>((_, i) => ({
     `${faker.name.jobTitle()}`,
     `${faker.name.jobTitle()}`,
   ],
+  historiques_versions: new Array(10)
+    .fill(0)
+    .map<IHistorique_version>((_, i) => ({
+      date: faker.date.recent().toISOString(),
+      descriptifs: faker.lorem.paragraph(),
+      version: `version ${i + 1}`,
+    })),
+  finalités: new Array(10)
+    .fill(0)
+    .map<string>((_, i) => `${faker.lorem.sentence()}`),
+  sponsor: new Array(10)
+    .fill(0)
+    .map<string>((_, i) => `${faker.name.jobTitle()}`),
+  animateurs: new Array(10)
+    .fill(0)
+    .map<string>((_, i) => `${faker.name.jobTitle()}`),
+  elements_entrees: new Array(10).fill(0).map<IElements_entree>((_, i) => ({
+    fournisseur: faker.company.companyName(),
+    title: faker.name.title(),
+  })),
+  elements_sorties: new Array(10).fill(0).map<IElements_entree>((_, i) => ({
+    fournisseur: faker.company.companyName(),
+    title: faker.name.title(),
+  })),
+  besoin_communication: new Array(10).fill(0).map<IElements_entree>((_, i) => ({
+    fournisseur: faker.company.companyName(),
+    title: faker.name.title(),
+  })),
+  besoin_formation: new Array(10).fill(0).map<IElements_entree>((_, i) => ({
+    fournisseur: faker.company.companyName(),
+    title: faker.name.title(),
+  })),
+  besoin_recrutement: new Array(10).fill(0).map<IElements_entree>((_, i) => ({
+    fournisseur: faker.company.companyName(),
+    title: faker.name.title(),
+  })),
+  besoin_demande_administrative: new Array(10)
+    .fill(0)
+    .map<IElements_entree>((_, i) => ({
+      fournisseur: faker.company.companyName(),
+      title: faker.name.title(),
+    })),
+  besoin_evaluation: new Array(10).fill(0).map<IElements_entree>((_, i) => ({
+    fournisseur: faker.company.companyName(),
+    title: faker.name.title(),
+  })),
+  besoin_achat: new Array(10).fill(0).map<IElements_entree>((_, i) => ({
+    fournisseur: faker.company.companyName(),
+    title: faker.name.title(),
+  })),
+  activites: new Array(10).fill(0).map<IActivite>((_, i) => ({
+    activity: faker.lorem.sentence(),
+    description: new Array(5)
+      .fill(0)
+      .map<string>((_, i) => `${faker.lorem.sentence()}`),
+    reference: new Array(5)
+      .fill(0)
+      .map<string>((_, i) => `${faker.lorem.sentence()}`),
+    responsabilite: new Array(5)
+      .fill(0)
+      .map<string>((_, i) => `${faker.lorem.sentence()}`),
+  })),
 }));
 
 export const users = new Array(10).fill(0).map<IUser>((_, i) => ({
@@ -270,4 +335,6 @@ export const initialState: IGlobalState = {
   signout: () => {},
   addAction: () => {},
   token: null,
+  searching: false,
+  toggleSearching: () => {},
 };
